@@ -13,10 +13,10 @@ async function bootstrap() {
   app.enableCors({ origin: true, credentials: true });
 
   const config = new DocumentBuilder()
-    .setTitle('API Documentation')  // Заголовок документації
+    .setTitle('Registration system API documentation')  // Заголовок документації
     .setDescription('The API description')  // Опис документації
-    .setVersion('1.0')  // Версія API
-    .addTag('events')  // Додавання тегів (можна для різних розділів API)
+    .setVersion('1.0') 
+    .addTag('Users Events Participant')  
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
