@@ -1,5 +1,5 @@
 // src/users/users.controller.ts
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
@@ -25,5 +25,10 @@ export class UsersController {
   @ApiResponse({ status: 401, description: 'Invalid credentials.' })
   async login(@Body() loginUserDto: LoginUserDto) {
     return this.usersService.login(loginUserDto);
+  }
+
+  @Get('alluser')
+  async getAllUser() {
+    return this.usersService.getAllUser();
   }
 }

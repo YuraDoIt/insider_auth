@@ -42,10 +42,11 @@ export class UsersService {
     const { email, password } = loginUserDto;
     const user = await this.usersRepository.findOne({ where: { email } });
 
+    console.log(user)
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
     }
-
+    console.log('1')
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       throw new UnauthorizedException('Invalid credentials');
@@ -56,4 +57,9 @@ export class UsersService {
 
     return { accessToken };
   }
+
+  async getAllUser() {
+    return this.usersRepository.find();  // Assuming `usersRepository` is the TypeORM repository for users.
+  }
+
 }

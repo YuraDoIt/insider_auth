@@ -13,5 +13,5 @@ export class UserEntity {
   email: string;
 
   @Column()
-  password: string;  // Зберігатимемо пароль в зашифрованому вигляді
+  password: string; 
 }

@@ -11,7 +11,7 @@ import { UsersController } from './user.controler';
   imports: [
     TypeOrmModule.forFeature([UserEntity]),
     JwtModule.register({
-      secret: 'your_jwt_secret',
+      secret: 'topsecret',
       signOptions: { expiresIn: '60m' },  // Термін дії токену
     }),
   ],
