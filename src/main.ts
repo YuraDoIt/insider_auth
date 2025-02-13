@@ -17,6 +17,7 @@ async function bootstrap() {
     .setDescription('The API description')  // Опис документації
     .setVersion('1.0') 
     .addTag('Users Events Participant')  
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
