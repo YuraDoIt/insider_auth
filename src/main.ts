@@ -24,6 +24,6 @@ async function bootstrap() {
 
   const Port = process.env.PORT ? + process.env.PORT : 3000;
   await app.listen(Port);
-  console.log(`Start localhost ${Port}`);
+  console.log(`Open localhost:${Port}/api`)
 }
 bootstrap();

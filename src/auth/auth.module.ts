@@ -8,7 +8,7 @@ import { JwtAuthGuard } from './jwt-auth.guard';  // Add the guard to your modul
 @Module({
   imports: [
     JwtModule.register({
-      secret: 'your_jwt_secret', // Replace with an environment variable for production
+      secret: process.env.JWT_SECRET, // Replace with an environment variable for production
       signOptions: { expiresIn: '60m' },
     }),
     UsersModule,
