@@ -30,10 +30,8 @@ export class EventsService {
   async create(createEventDto: CreateEventDto): Promise<EventEntity> {
     const event = this.eventsRepository.create(createEventDto);
 
-    // Save the event and get the saved entity, including the generated id
     const savedEvent = await this.eventsRepository.save(event);
 
-    // Return the saved event (which includes the id)
     return savedEvent;
   }
 

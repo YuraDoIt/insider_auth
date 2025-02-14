@@ -1,4 +1,3 @@
-// src/events/event.entity.ts
 import { ParticipantEntity } from 'src/participants/entity/participants.entity';
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 

@@ -1,4 +1,3 @@
-// src/users/users.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtModule } from '@nestjs/jwt';
@@ -12,7 +11,7 @@ import { UsersController } from './user.controler';
     TypeOrmModule.forFeature([UserEntity]),
     JwtModule.register({
       secret: 'topsecret',
-      signOptions: { expiresIn: '60m' },  // Термін дії токену
+      signOptions: { expiresIn: '60m' },
     }),
   ],
   providers: [UsersService, JwtStrategy],

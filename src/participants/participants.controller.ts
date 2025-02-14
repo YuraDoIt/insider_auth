@@ -4,11 +4,10 @@ import { CreateParticipantDto } from './dto/create-participant.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody } from '@nestjs/swagger';
 
 @Controller('participants')
-@ApiTags('Participants') // Group the endpoints under the "Participants" tag
+@ApiTags('Participants')
 export class ParticipantsController {
   constructor(private readonly participantsService: ParticipantsService) {}
 
-  // Реєстрація учасника на подію
   @Post()
   @ApiOperation({ summary: 'Register a participant to an event' })
   @ApiBody({
@@ -27,7 +26,6 @@ export class ParticipantsController {
     return this.participantsService.create(createParticipantDto);
   }
 
-  // Отримати учасників по події
   @Get('event/:eventId')
   @ApiOperation({ summary: 'Get participants by event ID' })
   @ApiParam({ name: 'eventId', type: 'number', description: 'The event ID' })
@@ -43,7 +41,6 @@ export class ParticipantsController {
     return this.participantsService.findByEvent(eventId);
   }
 
-  // Отримати події по учаснику
   @Get('user/:userId')
   @ApiOperation({ summary: 'Get events by user ID' })
   @ApiParam({ name: 'userId', type: 'number', description: 'The user ID' })

@@ -1,4 +1,3 @@
-// src/participants/participants.service.ts
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -16,18 +15,15 @@ export class ParticipantsService {
     private eventsRepository: Repository<EventEntity>,
   ) {}
 
-  // regicter pariticipant for event
   async create(createParticipantDto: CreateParticipantDto): Promise<ParticipantEntity> {
     const participant = this.participantsRepository.create(createParticipantDto);
     return this.participantsRepository.save(participant);
   }
 
-  // Get users by events
   async findByEvent(eventId: number): Promise<ParticipantEntity[]> {
     return this.participantsRepository.find({ where: { eventId } });
   }
 
-  // get event by users
   async findByUser(userId: number): Promise<ParticipantEntity[]> {
     return this.participantsRepository.find({ where: { userId } });
   }
@@ -49,7 +45,6 @@ export class ParticipantsService {
       throw new BadRequestException('Event has reached the maximum number of participants');
     }
 
-    // Якщо подія ще має місце, реєструємо учасника
     const participant = new ParticipantEntity();
     participant.eventId = eventId;
     participant.userId = user.id;

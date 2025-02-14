@@ -1,8 +1,7 @@
-// src/users/users.service.ts
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import * as bcrypt from 'bcrypt';  // Для хешування паролів
+import * as bcrypt from 'bcrypt';  
 import { JwtService } from '@nestjs/jwt';
 import { UserEntity } from './entity/user.entity';
 import { RegisterUserDto } from './dto/register-user.dto';
@@ -14,10 +13,9 @@ export class UsersService {
   constructor(
     @InjectRepository(UserEntity)
     private readonly usersRepository: Repository<UserEntity>,
-    private readonly jwtService: JwtService,  // Для генерації JWT токенів
+    private readonly jwtService: JwtService,  
   ) {}
 
-  // Реєстрація користувача
   async register(registerUserDto: RegisterUserDto): Promise<UserEntity> {
     const { username, email, password } = registerUserDto;
     const existingUser = await this.usersRepository.findOne({ where: [{ email }, { username }] });
@@ -26,7 +24,6 @@ export class UsersService {
       throw new Error('User with that email or username already exists');
     }
 
-    // Хешуємо пароль перед збереженням
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = this.usersRepository.create({
@@ -59,7 +56,7 @@ export class UsersService {
   }
 
   async getAllUser() {
-    return this.usersRepository.find();  // Assuming `usersRepository` is the TypeORM repository for users.
+    return this.usersRepository.find(); 
   }
 
 }
