@@ -13,8 +13,8 @@ async function bootstrap() {
   app.enableCors({ origin: true, credentials: true });
 
   const config = new DocumentBuilder()
-    .setTitle('Registration system API documentation')  // Заголовок документації
-    .setDescription('The API description')  // Опис документації
+    .setTitle('Registration system API documentation') 
+    .setDescription('The API description') 
     .setVersion('1.0') 
     .addTag('Users Events Participant')  
     .addBearerAuth()
