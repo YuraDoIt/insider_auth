@@ -4,11 +4,11 @@ To start this repositori configure you database locally set port and create tabl
 Create .env file with credentials:
 PORT=
 
-DB_host= '',
-DB_port= ,
-DB_username= '',
-DB_password= '',
-DB_database= '',
+TYPEORM_HOST=
+TYPEORM_PORT=
+TYPEORM_USERNAME=
+TYPEORM_PASSWORD=
+TYPEORM_DATABASE=
 
 JWT_SECRET=
 
