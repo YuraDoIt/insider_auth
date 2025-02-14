@@ -7,22 +7,12 @@ import { EventsModule } from './events/events.module';
 import { EventEntity } from './events/entity/event.entity';
 import { ParticipantsModule } from './participants/participants.module';
 import { ParticipantEntity } from './participants/entity/participants.entity';
+import ormconfig from './config/typeorm-config'
 
 @Module({
   imports: [
     UsersModule,
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DB_host,
-      port: process.env.DB_port ? + process.env.DB_port : 5433,
-      username: 'postgres',
-      password: '12345',
-      database: 'auth',
-      entities: [UserEntity, EventEntity, ParticipantEntity],
-      synchronize: true,
-      migrationsRun: true,
-      logging: true,
-    }),
+    TypeOrmModule.forRoot(ormconfig),
     EventsModule,
     ParticipantsModule,
   ],
